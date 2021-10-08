@@ -14,22 +14,6 @@
 				"url": "jdbc:mysql://192.168.15.129:3306/reservas_db",
 				"home": "mysql_client",
 				"type": "dev",
-				"auth-model": "native"
-			}
-		},
-		"mysql8-17c6150557a-510ba14a9ac43a4d": {
-			"provider": "mysql",
-			"driver": "mysql8",
-			"name": "j787tfwbj534yj2i",
-			"save-password": true,
-			"read-only": false,
-			"configuration": {
-				"host": "g84t6zfpijzwx08q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-				"port": "3306",
-				"database": "j787tfwbj534yj2i",
-				"url": "jdbc:mysql://g84t6zfpijzwx08q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/j787tfwbj534yj2i",
-				"home": "mysql_client",
-				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}
 			}
