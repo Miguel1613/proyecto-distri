@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import com.udistrital.ws.entity.models.Reserva;
+import com.udistrital.ws.entity.models.ReservaFinal;
+import com.udistrital.ws.entity.services.IReservaFinalService;
 import com.udistrital.ws.entity.services.IReservaService;
 @RestController
 public class ReservaController {
 @Autowired
 	IReservaService reservaService;
+
+@Autowired
+IReservaFinalService reservaFinalService;
 
 @GetMapping("/reservas")
 public List<Reserva> GetAll(){
@@ -41,4 +46,10 @@ public void Put(Reserva reserva, long id) {
 public void Delete(@PathVariable(value = "codigo_reserva") long codigo_reserva) {
 	reservaService.delete(codigo_reserva);
 }
+
+@PostMapping("/reservafinal")
+public String insert(ReservaFinal reserva) {
+return reservaFinalService.InsertReserva(reserva);	
+}
+
 }
