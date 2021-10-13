@@ -17,13 +17,13 @@ public class ReservaMesaId implements Serializable {
     private Long codigo_reserva;
 
     @Column(name = "id_mesa")
-    private Long id_mesa;
+    private String id_mesa;
 
 	public ReservaMesaId() {
 		super();
 	}
 
-	public ReservaMesaId(Long codigo_reserva, Long id_mesa) {
+	public ReservaMesaId(Long codigo_reserva, String id_mesa) {
 		super();
 		this.codigo_reserva = codigo_reserva;
 		this.id_mesa = id_mesa;
@@ -37,11 +37,11 @@ public class ReservaMesaId implements Serializable {
 		this.codigo_reserva = codigo_reserva;
 	}
 
-	public Long getId_mesa() {
+	public String getId_mesa() {
 		return id_mesa;
 	}
 
-	public void setId_mesa(Long id_mesa) {
+	public void setId_mesa(String id_mesa) {
 		this.id_mesa = id_mesa;
 	}
 

@@ -10,12 +10,12 @@ public class EstadoMesaId implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private long id_mesa;
+	private String id_mesa;
 	private String fecha_inicio;
-	public long getId_mesa() {
+	public String getId_mesa() {
 		return id_mesa;
 	}
-	public void setId_mesa(long id_mesa) {
+	public void setId_mesa(String id_mesa) {
 		this.id_mesa = id_mesa;
 	}
 	public String getFecha_inicio() {
@@ -24,7 +24,7 @@ public class EstadoMesaId implements Serializable {
 	public void setFecha_inicio(String fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
-	public EstadoMesaId(long id_mesa, String fecha_inicio) {
+	public EstadoMesaId(String id_mesa, String fecha_inicio) {
 		super();
 		this.id_mesa = id_mesa;
 		this.fecha_inicio = fecha_inicio;
@@ -37,7 +37,7 @@ public class EstadoMesaId implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((fecha_inicio == null) ? 0 : fecha_inicio.hashCode());
-		result = prime * result + (int) (id_mesa ^ (id_mesa >>> 32));
+		result = prime * result + ((id_mesa == null) ? 0 : id_mesa.hashCode());
 		return result;
 	}
 	@Override
@@ -54,10 +54,14 @@ public class EstadoMesaId implements Serializable {
 				return false;
 		} else if (!fecha_inicio.equals(other.fecha_inicio))
 			return false;
-		if (id_mesa != other.id_mesa)
+		if (id_mesa == null) {
+			if (other.id_mesa != null)
+				return false;
+		} else if (!id_mesa.equals(other.id_mesa))
 			return false;
 		return true;
 	}
+
 
 	
     

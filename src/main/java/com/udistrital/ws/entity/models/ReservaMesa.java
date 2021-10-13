@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
@@ -20,8 +22,9 @@ public class ReservaMesa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    private long id_mesa;
+    private String id_mesa;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String codigo_reserva;
 	
 	@NotEmpty
@@ -30,11 +33,11 @@ public class ReservaMesa implements Serializable {
     @NotEmpty
     private String fecha_fin;
 
-	public long getId_mesa() {
+	public String getId_mesa() {
 		return id_mesa;
 	}
 
-	public void setId_mesa(long id_mesa) {
+	public void setId_mesa(String id_mesa) {
 		this.id_mesa = id_mesa;
 	}
 
@@ -62,7 +65,7 @@ public class ReservaMesa implements Serializable {
 		this.fecha_fin = fecha_fin;
 	}
 
-	public ReservaMesa(long id_mesa, String codigo_reserva, @NotEmpty String fecha_inicio, @NotEmpty String fecha_fin) {
+	public ReservaMesa(String id_mesa, String codigo_reserva, @NotEmpty String fecha_inicio, @NotEmpty String fecha_fin) {
 		super();
 		this.id_mesa = id_mesa;
 		this.codigo_reserva = codigo_reserva;

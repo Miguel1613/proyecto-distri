@@ -21,7 +21,7 @@ public class EstadoMesa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-    private long id_mesa;
+    private String id_mesa;
     @Id
     private String fecha_inicio;
 	
@@ -29,10 +29,10 @@ public class EstadoMesa implements Serializable {
 	private long id_estado;
 	@NotEmpty
     private String fecha_fin;
-	public long getId_mesa() {
+	public String getId_mesa() {
 		return id_mesa;
 	}
-	public void setId_mesa(long id_mesa) {
+	public void setId_mesa(String id_mesa) {
 		this.id_mesa = id_mesa;
 	}
 	public String getFecha_inicio() {
@@ -53,7 +53,7 @@ public class EstadoMesa implements Serializable {
 	public void setFecha_fin(String fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
-	public EstadoMesa(long id_mesa, String fecha_inicio, @NotNull long id_estado, @NotEmpty String fecha_fin) {
+	public EstadoMesa(String id_mesa, String fecha_inicio, @NotNull long id_estado, @NotEmpty String fecha_fin) {
 		super();
 		this.id_mesa = id_mesa;
 		this.fecha_inicio = fecha_inicio;
