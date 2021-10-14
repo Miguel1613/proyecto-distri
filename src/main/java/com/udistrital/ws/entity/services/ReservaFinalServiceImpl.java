@@ -34,7 +34,7 @@ public class ReservaFinalServiceImpl implements IReservaFinalService {
 		// Validar existencia de Cliente
 		String mensaje = null;
 		String id_mesa = estadoMesaDao.findmesa(reserva.getNumero_personas(), reserva.getFecha_inicio(), reserva.getFecha_fin());
-		if (id_mesa.isEmpty()) {
+		if (id_mesa == null) {
 			mensaje = "{\"id_mesa\":\"N/A\",\"status\":\"No hay mesa disponible para el numero de personas requerido en la hora y fecha indicadas, por favor re agendar\"}";
 		}
 		else {
@@ -79,7 +79,7 @@ public class ReservaFinalServiceImpl implements IReservaFinalService {
 		estadoMesa.setId_estado(reserva.getId_estado());
 		estadoMesa.setId_mesa(id_mesa);
 		estadoMesaDao.save(estadoMesa);
-		mensaje = "{\"id_mesa\":"+id_mesa+",\"status\":\"Reserva Exitosa\"}";
+		mensaje = "{\"id_mesa\":"+id_mesa+",\"status\":\"La Reserva fue exitosa, muchas gracias por preferirnos.\"}";
 		}
 		return mensaje;
 		
