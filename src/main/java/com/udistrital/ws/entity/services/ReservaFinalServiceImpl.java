@@ -40,13 +40,17 @@ public class ReservaFinalServiceImpl implements IReservaFinalService {
 		else {
 		Optional<Cliente> cliente = clienteDao.findById(reserva.getCedula());
 		if (cliente.isPresent()) {
-			//clienteDao.deleteById(reserva.getCedula());
-			//Cliente nuevo_cliente = new Cliente();
-			//nuevo_cliente.setCedula(reserva.getCedula());
-			//nuevo_cliente.setCelular(reserva.getCelular());
-			//nuevo_cliente.setEmail(reserva.getEmail());
-		//	nuevo_cliente.setNombre(reserva.getNombre());
-		//clienteDao.save(nuevo_cliente);
+			cliente.get();
+			Cliente nuevo_cliente = cliente.get();
+			if(nuevo_cliente.getCelular() != reserva.getCelular() ) {
+				clienteDao.updateCelular(reserva.getCedula(), reserva.getCelular());
+			}
+			if(nuevo_cliente.getEmail() != reserva.getEmail() ) {
+				clienteDao.updateEmail(reserva.getCedula(), reserva.getEmail());
+			}
+			if(nuevo_cliente.getNombre() != reserva.getNombre() ) {
+				clienteDao.updateNombre(reserva.getCedula(), reserva.getNombre());
+			}
 		}
 		else {
 			Cliente nuevo_cliente = new Cliente();
@@ -79,7 +83,7 @@ public class ReservaFinalServiceImpl implements IReservaFinalService {
 		estadoMesa.setId_estado(reserva.getId_estado());
 		estadoMesa.setId_mesa(id_mesa);
 		estadoMesaDao.save(estadoMesa);
-		mensaje = "{\"id_mesa\":"+id_mesa+",\"status\":\"La Reserva fue exitosa, muchas gracias por preferirnos.\"}";
+		mensaje = "{\"id_mesa\":"+id_mesa+",\"status\":\"La reserva fue exitosa, muchas gracias por preferirnos.\"}";
 		}
 		return mensaje;
 		
