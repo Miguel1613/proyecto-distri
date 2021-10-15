@@ -42,4 +42,10 @@ private IReservaDao reservaDao;
 		reservaDao.deleteById(codigo_reserva);
 	}
 
+	@Override
+	public List<Reserva> getbycedula(long cedula) {
+		List<Reserva> reservas = reservaDao.findbycedula(cedula);
+		return reservas;
+	}
+
 }

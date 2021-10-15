@@ -10,4 +10,5 @@ public interface IReservaService {
 	public void post(Reserva reserva);
 	public void put (Reserva reserva, long id);
 	public void delete(long codigo_reserva);
+	public List<Reserva> getbycedula(long cedula);
 }

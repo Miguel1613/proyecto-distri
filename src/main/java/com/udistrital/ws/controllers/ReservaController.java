@@ -52,4 +52,9 @@ public String insert(ReservaFinal reserva) {
 return reservaFinalService.InsertReserva(reserva);	
 }
 
+@GetMapping("/reservas/getbycedula/{cedula}")
+public List<Reserva> getbycedula(@PathVariable(value = "cedula") long cedula){
+	return reservaService.getbycedula(cedula);
+}
+
 }
