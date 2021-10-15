@@ -15,6 +15,7 @@ import com.udistrital.ws.entity.models.EstadoMesa;
 import com.udistrital.ws.entity.models.Reserva;
 import com.udistrital.ws.entity.models.ReservaFinal;
 import com.udistrital.ws.entity.models.ReservaMesa;
+import com.udistrital.ws.entity.models.ReservaMesaId;
 @Service
 public class ReservaFinalServiceImpl implements IReservaFinalService {
 	@Autowired
@@ -88,6 +89,28 @@ public class ReservaFinalServiceImpl implements IReservaFinalService {
 		}
 		return mensaje;
 		
+	}
+
+	@Override
+	public String DeleteReserva(long codigo_reserva) {
+		String mensaje = null;
+	
+	
+	try
+	{
+	Reserva reserva =	reservaDao.findById(codigo_reserva).get();
+	String fecha_reserva = reserva.getFecha_reserva();
+	String id_mesa = reservaMesaDao.findidmesa(codigo_reserva);
+	estadoMesaDao.deleteEstadoMesa(fecha_reserva, id_mesa);
+	reservaMesaDao.deleteReservaMesa(codigo_reserva);
+	reservaDao.deleteById(codigo_reserva);
+		mensaje = "{\"status\":\"La reserva ha sido cancelada con exito.\"}";
+		
+		}
+		catch (Exception e)  {
+			mensaje = "{\"status\":\"La reserva no aparece en base de datos.\"}";
+		}
+		return mensaje;
 	}
 
 }

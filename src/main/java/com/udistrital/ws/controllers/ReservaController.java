@@ -52,6 +52,11 @@ public String insert(ReservaFinal reserva) {
 return reservaFinalService.InsertReserva(reserva);	
 }
 
+@DeleteMapping("/reservafinal/{codigo_reserva}")
+public String DeleteReserva(@PathVariable(value = "codigo_reserva") long codigo_reserva) {
+	return reservaFinalService.DeleteReserva(codigo_reserva);
+}
+
 @GetMapping("/reservas/getbycedula/{cedula}")
 public List<Reserva> getbycedula(@PathVariable(value = "cedula") long cedula){
 	return reservaService.getbycedula(cedula);
