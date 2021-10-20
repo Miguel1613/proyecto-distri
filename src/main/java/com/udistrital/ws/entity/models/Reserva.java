@@ -1,7 +1,7 @@
 package com.udistrital.ws.entity.models;
 
 import java.io.Serializable;
-
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,8 +23,8 @@ public class Reserva implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long codigo_reserva;
     
-    @NotEmpty
-    private String fecha_reserva;
+  
+    private Timestamp fecha_reserva;
     @NotNull
     private long numero_personas;
     @NotEmpty
@@ -41,7 +41,7 @@ public class Reserva implements Serializable {
 	public Reserva() {
 		super();
 	}
-	public Reserva(@NotEmpty String fecha_reserva, @NotNull long numero_personas, @NotEmpty String es_fumador,
+	public Reserva( Timestamp fecha_reserva, @NotNull long numero_personas, @NotEmpty String es_fumador,
 			@NotEmpty String tiene_plan, @NotNull long cedula, @NotNull long id_plan, @NotNull long id_sede) {
 		super();
 		this.fecha_reserva = fecha_reserva;
@@ -58,11 +58,11 @@ public class Reserva implements Serializable {
 	public void setCodigo_reserva(long codigo_reserva) {
 		this.codigo_reserva = codigo_reserva;
 	}
-	public String getFecha_reserva() {
+	public  Timestamp getFecha_reserva() {
 		return fecha_reserva;
 	}
-	public void setFecha_reserva(String fecha_reserva) {
-		this.fecha_reserva = fecha_reserva;
+	public void setFecha_reserva(Timestamp timestamp) {
+		this.fecha_reserva = timestamp;
 	}
 	public long getNumero_personas() {
 		return numero_personas;

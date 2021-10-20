@@ -1,6 +1,7 @@
 package com.udistrital.ws.entity.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 
 public class EstadoMesaId implements Serializable {
@@ -11,20 +12,20 @@ public class EstadoMesaId implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String id_mesa;
-	private String fecha_inicio;
+	private Timestamp fecha_inicio;
 	public String getId_mesa() {
 		return id_mesa;
 	}
 	public void setId_mesa(String id_mesa) {
 		this.id_mesa = id_mesa;
 	}
-	public String getFecha_inicio() {
+	public Timestamp getFecha_inicio() {
 		return fecha_inicio;
 	}
-	public void setFecha_inicio(String fecha_inicio) {
+	public void setFecha_inicio(Timestamp fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
-	public EstadoMesaId(String id_mesa, String fecha_inicio) {
+	public EstadoMesaId(String id_mesa, Timestamp fecha_inicio) {
 		super();
 		this.id_mesa = id_mesa;
 		this.fecha_inicio = fecha_inicio;

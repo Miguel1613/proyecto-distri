@@ -15,7 +15,6 @@ import com.udistrital.ws.entity.models.EstadoMesa;
 import com.udistrital.ws.entity.models.Reserva;
 import com.udistrital.ws.entity.models.ReservaFinal;
 import com.udistrital.ws.entity.models.ReservaMesa;
-import com.udistrital.ws.entity.models.ReservaMesaId;
 @Service
 public class ReservaFinalServiceImpl implements IReservaFinalService {
 	@Autowired
@@ -30,11 +29,15 @@ public class ReservaFinalServiceImpl implements IReservaFinalService {
 	@Autowired
 	IClienteService clienteService;
 	
-	@SuppressWarnings("null")
+	@SuppressWarnings({ "null", "deprecation" })
 	@Override
 	public String InsertReserva(ReservaFinal reserva) {
 		// Validar existencia de Cliente
 		String mensaje = null;
+		if (reserva.getFecha_inicio().getHours() > 21 || reserva.getFecha_inicio().getHours() < 8  ) {
+			mensaje = "{\"id_mesa\":\"N/A\",\"status\":\"Horario de reserva invalido recuerde que puede reservar desde las 8 am hasta las 9 pm\"}";
+		}
+		else {
 		String id_mesa = estadoMesaDao.findmesa(reserva.getNumero_personas(), reserva.getFecha_inicio(), reserva.getFecha_fin());
 		if (id_mesa == null) {
 			mensaje = "{\"id_mesa\":\"N/A\",\"status\":\"No hay mesa disponible para el numero de personas requerido en la hora y fecha indicadas, por favor re agendar\"}";
@@ -87,6 +90,7 @@ public class ReservaFinalServiceImpl implements IReservaFinalService {
 		estadoMesaDao.save(estadoMesa);
 		mensaje = "{\"id_mesa\":"+id_mesa+",\"status\":\"La reserva fue exitosa, muchas gracias por preferirnos.\"}";
 		}
+		}
 		return mensaje;
 		
 	}
@@ -99,7 +103,7 @@ public class ReservaFinalServiceImpl implements IReservaFinalService {
 	try
 	{
 	Reserva reserva =	reservaDao.findById(codigo_reserva).get();
-	String fecha_reserva = reserva.getFecha_reserva();
+	 Timestamp fecha_reserva = reserva.getFecha_reserva();
 	String id_mesa = reservaMesaDao.findidmesa(codigo_reserva);
 	estadoMesaDao.deleteEstadoMesa(fecha_reserva, id_mesa);
 	reservaMesaDao.deleteReservaMesa(codigo_reserva);

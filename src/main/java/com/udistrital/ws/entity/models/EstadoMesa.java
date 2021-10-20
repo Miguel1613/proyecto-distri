@@ -1,13 +1,12 @@
 package com.udistrital.ws.entity.models;
 
 import java.io.Serializable;
-
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -23,23 +22,23 @@ public class EstadoMesa implements Serializable {
 	@Id
     private String id_mesa;
     @Id
-    private String fecha_inicio;
+    private Timestamp fecha_inicio;
 	
 	@NotNull
 	private long id_estado;
-	@NotEmpty
-    private String fecha_fin;
+	
+    private Timestamp fecha_fin;
 	public String getId_mesa() {
 		return id_mesa;
 	}
 	public void setId_mesa(String id_mesa) {
 		this.id_mesa = id_mesa;
 	}
-	public String getFecha_inicio() {
+	public Timestamp getFecha_inicio() {
 		return fecha_inicio;
 	}
-	public void setFecha_inicio(String fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
+	public void setFecha_inicio(Timestamp timestamp) {
+		this.fecha_inicio = timestamp;
 	}
 	public long getId_estado() {
 		return id_estado;
@@ -47,13 +46,13 @@ public class EstadoMesa implements Serializable {
 	public void setId_estado(long id_estado) {
 		this.id_estado = id_estado;
 	}
-	public String getFecha_fin() {
+	public  Timestamp getFecha_fin() {
 		return fecha_fin;
 	}
-	public void setFecha_fin(String fecha_fin) {
-		this.fecha_fin = fecha_fin;
+	public void setFecha_fin(Timestamp timestamp) {
+		this.fecha_fin = timestamp;
 	}
-	public EstadoMesa(String id_mesa, String fecha_inicio, @NotNull long id_estado, @NotEmpty String fecha_fin) {
+	public EstadoMesa(String id_mesa, Timestamp fecha_inicio, @NotNull long id_estado, Timestamp fecha_fin) {
 		super();
 		this.id_mesa = id_mesa;
 		this.fecha_inicio = fecha_inicio;

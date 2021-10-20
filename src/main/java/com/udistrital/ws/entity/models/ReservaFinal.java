@@ -1,6 +1,7 @@
 package com.udistrital.ws.entity.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -10,10 +11,10 @@ public class ReservaFinal implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@NotEmpty
-    private String fecha_inicio;
-	@NotEmpty
-    private String fecha_fin;
+
+    private Timestamp fecha_inicio;
+
+    private Timestamp fecha_fin;
     @NotNull
     private long numero_personas;
     @NotEmpty
@@ -36,7 +37,7 @@ public class ReservaFinal implements Serializable{
     public ReservaFinal() {
 		super();
 	}
-	public ReservaFinal(@NotEmpty String fecha_inicio, @NotEmpty String fecha_fin, @NotNull long numero_personas,
+	public ReservaFinal( Timestamp fecha_inicio,  Timestamp fecha_fin, @NotNull long numero_personas,
 			@NotEmpty String es_fumador, @NotEmpty String tiene_plan, @NotNull long cedula, @NotNull long id_plan,
 			@NotNull long id_sede, @NotEmpty String nombre, @NotEmpty String celular, @NotEmpty String email,
 			long id_mesa, @NotNull long id_estado) {
@@ -55,16 +56,16 @@ public class ReservaFinal implements Serializable{
 		this.id_mesa = id_mesa;
 		this.id_estado = id_estado;
 	}
-	public String getFecha_inicio() {
+	public Timestamp getFecha_inicio() {
 		return fecha_inicio;
 	}
-	public void setFecha_inicio(String fecha_inicio) {
+	public void setFecha_inicio(Timestamp fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
-	public String getFecha_fin() {
+	public Timestamp getFecha_fin() {
 		return fecha_fin;
 	}
-	public void setFecha_fin(String fecha_fin) {
+	public void setFecha_fin(Timestamp fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
 	public long getNumero_personas() {

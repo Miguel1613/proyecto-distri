@@ -1,5 +1,6 @@
 package com.udistrital.ws.controllers;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class EstadoMesaController {
 	}
 	
 	@GetMapping("/findmesa/{cantidad}/{fecha_inicio}/{fecha_fin}")
-	public String Getmesa(@PathVariable(value = "cantidad") long cantidad, @PathVariable(value = "fecha_inicio") String fecha_inicio, @PathVariable(value = "fecha_fin") String fecha_fin){
+	public String Getmesa(@PathVariable(value = "cantidad") long cantidad, @PathVariable(value = "fecha_inicio") Timestamp fecha_inicio, @PathVariable(value = "fecha_fin") Timestamp fecha_fin){
 		return estadoMesaService.getmesa(cantidad,fecha_inicio,fecha_fin);
 	}
 	

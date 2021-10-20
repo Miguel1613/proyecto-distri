@@ -1,8 +1,9 @@
 package com.udistrital.ws.entity.models;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
-import javax.persistence.EmbeddedId;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,11 +28,11 @@ public class ReservaMesa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String codigo_reserva;
 	
-	@NotEmpty
-    private String fecha_inicio;
+
+    private Timestamp fecha_inicio;
     
-    @NotEmpty
-    private String fecha_fin;
+  
+    private Timestamp fecha_fin;
 
 	public String getId_mesa() {
 		return id_mesa;
@@ -49,23 +50,23 @@ public class ReservaMesa implements Serializable {
 		this.codigo_reserva = codigo_reserva;
 	}
 
-	public String getFecha_inicio() {
+	public  Timestamp getFecha_inicio() {
 		return fecha_inicio;
 	}
 
-	public void setFecha_inicio(String fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
+	public void setFecha_inicio(Timestamp timestamp) {
+		this.fecha_inicio = timestamp;
 	}
 
-	public String getFecha_fin() {
+	public Timestamp getFecha_fin() {
 		return fecha_fin;
 	}
 
-	public void setFecha_fin(String fecha_fin) {
-		this.fecha_fin = fecha_fin;
+	public void setFecha_fin(Timestamp timestamp) {
+		this.fecha_fin = timestamp;
 	}
 
-	public ReservaMesa(String id_mesa, String codigo_reserva, @NotEmpty String fecha_inicio, @NotEmpty String fecha_fin) {
+	public ReservaMesa(String id_mesa, String codigo_reserva,  Timestamp fecha_inicio,  Timestamp fecha_fin) {
 		super();
 		this.id_mesa = id_mesa;
 		this.codigo_reserva = codigo_reserva;

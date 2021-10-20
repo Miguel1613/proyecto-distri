@@ -1,5 +1,6 @@
 package com.udistrital.ws.entity.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class EstadoMesaServiceImpl implements IEstadoMesaService {
 
 
 	@Override
-	public String getmesa(long cantidad, String fecha_inicio, String fecha_fin) {
+	public String getmesa(long cantidad, Timestamp fecha_inicio, Timestamp fecha_fin) {
 		return estadoMesaDao.findmesa(cantidad,fecha_inicio,fecha_fin);
 	}
 
